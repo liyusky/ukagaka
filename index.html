@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html style="height:100%;">
+<html>
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="./css/map.css">
+  <link rel="stylesheet" href="./css/rank.css">
+  <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/animate.css">
   <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/transaction.css">
   <script src="./scripts/echarts.min.js"></script>
   <script src="./scripts/china.js"></script>
   <script src="./scripts/geography.js"></script>
@@ -15,94 +17,118 @@
   <script src="./scripts/customer-index.js"></script>
   <script src="./scripts/jquery-3.3.1.min.js"></script>
   <script src="./scripts/ChinaMap.class.js"></script>
+  <script src="./scripts/Transaction.class.js"></script>
 </head>
 
 <body>
-  <section class="volume">
-    <ul>
-      <li class="trade" id="box1">
-        <div class="box1"></div>
-      </li>
-      <li class="trade">
-        <p class="trade-msg">今日交易额(元)</p>
-      </li>
-      <li class="trade" id="box2">
-        <div class="box2"></div>
-      </li>
-      <li class="trade">
-        <p class="trade-msg mar21">累计交易额(元)</p>
-      </li>
-      <li class="trade mt37" id="box3">
-        <p class="trade-msg mar21 fz24">平均每笔交易(元):</p>
-        <div class="box3"></div>
-      </li>
-      <div class="clear"></div>
-      <li class="trade" id="box4">
-        <p class="trade-msg fz24">近1分钟注册用户(人):</p>
-        <div class="box4"></div>
-      </li>
-      <li class="trade" id="box5">
-        <p class="trade-msg fz24">近1分钟交易笔数(数):</p>
-        <div class="box5"></div>
-      </li>
-    </ul>
-  </section>
-  <section class="tradecount">
-    <ul>
-      <li id="box6">
-        <div class="box6"></div>
-      </li>
-      <li>
-        <p class="trade-msg">今日交易笔数(笔)</p>
-      </li>
-      <li id="box7">
-        <div class="box7"></div>
-      </li>
-      <li>
-        <div class="trade-msg">累计交易笔数(笔)</div>
-      </li>
-    </ul>
-  </section>
-  <section class="register-count">
-    <ul>
-      <li id="box8">
-        <div class="box8"></div>
-      </li>
-      <li>
-        <p class="register-msg">今日注册用户(人)</p>
-      </li>
-      <li id="box9">
-        <div class="box9"></div>
-      </li>
-      <li class="register-msg">累计交易用户数(人)</li>
-    </ul>
-  </section>
-  <section id="userProvince">
-  </section>
-  <section class="recently">
-    <table class="newTransaction" id="newTransaction">
-      <thead>
-        <th>城市</th>
-        <th>姓名</th>
-        <th>交易金额(元)</th>
-        <th>时间</th>
-      </thead>
-    </table>
-  </section>
-  <section id="userProvince">
-    <div class="province-head">
-      <p>今日交易用户省份TOP10</p>
-      <img src="./img/arrow.png" alt="">
-    </div>
-    <div class="province-content">
-      <ul id="province">
-        <li>
-      </ul>
+  <section class="transaction">
+    <header class="transaction-header">
+      <div>城市</div>
+      <div>姓名</div>
+      <div>交易金额(元)</div>
+      <div>时间</div>
+    </header>
+    <div class="transaction-wrap">
+      <ul class="wrap-content" id="transaction-content"></ul>
     </div>
   </section>
   <section class="china-map">
     <div class="map" id="map"></div>
     <div class="tips" id="tips"></div>
+  </section>
+  <section class="rank">
+    <header class="rank-header">
+      <p>交易用户省份TOP10</p>
+      <img class="header-arrow" src="./images/arrow.png">
+    </header>
+    <ul class="rank-list" id="rank">
+      <li class="list-item hide">
+        <div class="item-sequence">
+          <img class="sequence-sign" src="./images/top-1.png">
+        </div>
+        <div class="item-name"></div>
+        <div class="item-link">
+          <div class="link-rail"></div>
+        </div>
+        <div class="item-num"></div>
+      </li>
+      <li class="list-item hide">
+        <div class="item-sequence">
+          <img class="sequence-sign" src="./images/top-2.png">
+        </div>
+        <div class="item-name"></div>
+        <div class="item-link">
+          <div class="link-rail"></div>
+        </div>
+        <div class="item-num"></div>
+      </li>
+      <li class="list-item hide">
+        <div class="item-sequence">
+          <img class="sequence-sign" src="./images/top-3.png">
+        </div>
+        <div class="item-name"></div>
+        <div class="item-link">
+          <div class="link-rail"></div>
+        </div>
+        <div class="item-num"></div>
+      </li>
+      <li class="list-item hide">
+        <div class="item-sequence">4</div>
+        <div class="item-name"></div>
+        <div class="item-link">
+          <div class="link-rail"></div>
+        </div>
+        <div class="item-num"></div>
+      </li>
+      <li class="list-item hide">
+        <div class="item-sequence">5</div>
+        <div class="item-name"></div>
+        <div class="item-link">
+          <div class="link-rail"></div>
+        </div>
+        <div class="item-num"></div>
+      </li>
+      <li class="list-item hide">
+        <div class="item-sequence">6</div>
+        <div class="item-name"></div>
+        <div class="item-link">
+          <div class="link-rail"></div>
+        </div>
+        <div class="item-num"></div>
+      </li>
+      <li class="list-item hide">
+        <div class="item-sequence">7</div>
+        <div class="item-name"></div>
+        <div class="item-link">
+          <div class="link-rail"></div>
+        </div>
+        <div class="item-num"></div>
+      </li>
+      <li class="list-item hide">
+        <div class="item-sequence">8</div>
+        <div class="item-name"></div>
+        <div class="item-link">
+          <div class="link-rail"></div>
+        </div>
+        <div class="item-num"></div>
+      </li>
+      <li class="list-item hide">
+        <div class="item-sequence">9</div>
+        <div class="item-name"></div>
+        <div class="item-link">
+          <div class="link-rail"></div>
+        </div>
+        <div class="item-num"></div>
+      </li>
+      <li class="list-item hide">
+        <div class="item-sequence">10</div>
+        <div class="item-name"></div>
+        <div class="item-link">
+          <div class="link-rail"></div>
+        </div>
+        <div class="item-num"></div>
+      </li>
+    </ul>
   </section>
   <script>
     const ws = new WebSocket("ws://192.168.0.101:8080");
@@ -111,23 +137,36 @@
         location.reload();
         break;
       case WebSocket.CLOSED:
-        location.reload();
+        refresh();
         break;
     }
   </script>
   <script>
     window.onload = function () {
-      var chinaMap = new ChinaMap();
+      const chinaMap = new ChinaMap();
+      const transaction = new Transaction();
       ws.addEventListener('message', message => {
         try {
           chinaMap.mount(message);
         } catch (error) {
-          location.reload();
+          refresh();
         }
       })
+      ws.addEventListener('message', message => {
+        try {
+          transaction.mount(message);
+        } catch (error) {
+          refresh();
+        }
+      });
+    }
+
+    function refresh() {
+      setTimeout(() => {
+        location.reload();
+      }, 5000);
     }
   </script>
-  <script src="./scripts/map.js"></script>
 </body>
 
 </html>

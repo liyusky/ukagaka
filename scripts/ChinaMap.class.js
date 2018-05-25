@@ -156,6 +156,7 @@ var ChinaMap = function () {
 
       var users = JSON.parse(decodeURIComponent(message.data)).Users;
 
+
       // 处理后台数据
       users.forEach(function (item, index, _self) {
         //点的名称

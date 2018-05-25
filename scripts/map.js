@@ -82,33 +82,6 @@ $(function () {
     return this.replace(pattern, ',');
   };
 
-  function cityMove(message) {
-    var data = JSON.parse(decodeURIComponent(message.data));
-    var cityList = data.Users;
-    var str = '<tbody class="tbody">' +
-      '<tr>' +
-      '<td>' + cityList[0].ProviceName + '</td>' +
-      '<td>' + cityList[0].Name + '</td>' +
-      '<td>' + cityList[0].Amount + '</td>' +
-      '<td>' + cityList[0].Time + '</td>' +
-      '</tr>' +
-      '<tr>' +
-      '<td>' + cityList[1].ProviceName + '</td>' +
-      '<td>' + cityList[1].Name + '</td>' +
-      '<td>' + cityList[1].Amount + '</td>' +
-      '<td>' + cityList[1].Time + '</td>' +
-      '</tr>' +
-      '</tbody>';
-    $('#newTransaction').append(str);
-
-    setTimeout(function () {
-      $('.tbody')[0].style.top = '166px';
-      if ($('.tbody')[1]) $('.tbody')[1].style.top = '28px';
-      setTimeout(function () {
-        $('.tbody')[0].remove();
-      }, 5000);
-    }, 10000);
-  };
 
   function rankings(message) {
     var data = JSON.parse(decodeURIComponent(message.data));
