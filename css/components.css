@@ -1,0 +1,528 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+ol,
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: none;
+}
+
+body {
+  background: #111117;
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+}
+
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.clear {
+  clear: both;
+}
+
+.l {
+  float: left;
+}
+
+.volume {
+  width: 400px;
+  height: 355px;
+  position: absolute;
+  left: 70px;
+  top: 50px;
+  z-index: 10;
+}
+
+.volume .fz24 {
+  font-size: 24px !important;
+}
+
+.volume ul #box1 .box1 {
+  height: 44px;
+  overflow: hidden;
+  font-family: '宋体';
+}
+
+.volume ul #box1 .trade-msg {
+  font-family: '微软雅黑';
+}
+
+.volume ul #box1 span {
+  display: inline-block;
+  color: #00ecef;
+  width: 30px;
+  height: 44px;
+  font-size: 52.64px;
+  line-height: 44px;
+}
+
+.volume ul #box1 .sign-box span {
+  width: 15px;
+  margin-top: -5px;
+}
+
+.volume ul #box1 .digit-container {
+  width: 38px;
+  text-align: center;
+  overflow: hidden;
+  font-size: 0;
+}
+
+.volume ul #box2 {
+  margin-top: 27px;
+}
+
+.volume ul #box2 span {
+  display: inline-block;
+  color: #00ecef;
+  width: 30px;
+  height: 44px;
+  font-size: 31.77px;
+  line-height: 44px;
+}
+
+.volume ul #box2 .box2 {
+  height: 44px;
+  overflow: hidden;
+  font-family: '宋体';
+}
+
+.volume ul #box2 .trade-msg {
+  font-family: '微软雅黑';
+}
+
+.volume ul #box2 .sign-box span {
+  width: 15px;
+}
+
+.volume ul #box2 .digit-container {
+  width: 25px;
+  text-align: center;
+  overflow: hidden;
+  font-size: 0;
+}
+
+.volume ul #box3 .trade-msg {
+  position: relative;
+  float: left;
+  color: #fff;
+}
+
+.volume ul #box3 .box3 {
+  height: 44px;
+  overflow: hidden;
+  margin-top: 5px;
+  font-family: '微软雅黑';
+}
+
+.volume ul #box3 .trade-msg {
+  font-family: '微软雅黑';
+}
+
+.volume ul #box3 span {
+  display: inline-block;
+  color: #00ecef;
+  width: 30px;
+  height: 44px;
+  font-size: 24.8px;
+  line-height: 44px;
+}
+
+.volume ul #box3 .sign-box span {
+  width: 15px;
+}
+
+.volume ul #box3 .digit-container {
+  width: 30px;
+  text-align: center;
+  overflow: hidden;
+  font-size: 0;
+}
+
+.volume ul #box4 .box4 {
+  height: 44px;
+  overflow: hidden;
+}
+
+.volume ul #box4 .trade-msg {
+  float: left;
+}
+
+.volume ul #box4 span {
+  display: inline-block;
+  color: #00ecef;
+  width: 30px;
+  height: 44px;
+  font-size: 24.8px;
+  line-height: 44px;
+}
+
+.volume ul #box4 .sign-box span {
+  width: 15px;
+}
+
+.volume ul #box4 .digit-container {
+  width: 30px;
+  text-align: center;
+  overflow: hidden;
+  font-size: 0;
+  font-family: '宋体';
+}
+
+.volume ul #box5 .box5 {
+  height: 44px;
+  overflow: hidden;
+  margin-top: 5px;
+  float: left;
+}
+
+.volume ul #box5 .trade-msg {
+  float: left;
+  font-family: '微软雅黑';
+}
+
+.volume ul #box5 span {
+  display: inline-block;
+  color: #00ecef;
+  width: 30px;
+  height: 44px;
+  font-size: 24.8px;
+  line-height: 44px;
+}
+
+.volume ul #box5 .sign-box span {
+  width: 15px;
+}
+
+.volume ul #box5 .digit-container {
+  width: 30px;
+  text-align: center;
+  overflow: hidden;
+  font-size: 0;
+  font-family: '宋体';
+}
+
+.volume ul .trade-msg {
+  font-size: 27.23px;
+  margin-bottom: 6px;
+  margin-top: 6px;
+  color: #fff;
+}
+
+.volume ul .mar21 {
+  margin-top: 7px;
+}
+
+.volume ul .mt37 {
+  margin-top: 30px !important;
+}
+
+.volume ul .countNumber {
+  color: #02cfd2;
+}
+
+.tradecount {
+  position: absolute;
+  top: 50px;
+  left: 810px;
+  width: 270px;
+  height: 205px;
+  z-index: 10;
+}
+
+.tradecount #box6 span {
+  float: left;
+}
+
+.tradecount #box6 .box6 {
+  height: 44px;
+  overflow: hidden;
+}
+
+.tradecount #box6 span {
+  display: inline-block;
+  color: #00ecef;
+  width: 30px;
+  height: 44px;
+  font-size: 52.64px;
+  line-height: 44px;
+}
+
+.tradecount #box6 .sign-box span {
+  width: 15px;
+}
+
+.tradecount #box6 .digit-container {
+  width: 30px;
+  text-align: center;
+  overflow: hidden;
+  font-size: 0;
+  font-family: '宋体';
+}
+
+.tradecount ul .trade-msg {
+  font-size: 27.23px;
+  margin-bottom: 6px;
+  margin-top: 6px;
+  color: #fff;
+  font-family: '微软雅黑';
+}
+
+.tradecount ul #box7 .box7 {
+  height: 44px;
+  overflow: hidden;
+}
+
+.tradecount ul #box7 span {
+  display: inline-block;
+  color: #00ecef;
+  width: 30px;
+  height: 44px;
+  font-size: 31.77px;
+  line-height: 44px;
+}
+
+.tradecount ul #box7 .sign-box span {
+  width: 15px;
+}
+
+.tradecount ul #box7 .digit-container {
+  width: 30px;
+  text-align: center;
+  overflow: hidden;
+  font-size: 0;
+  font-family: '宋体';
+}
+
+.register-count {
+  width: 264px;
+  height: 202px;
+  position: absolute;
+  left: 1388px;
+  top: 40px;  
+  z-index: 10;
+}
+
+.register-count ul .register-box {
+  font-size: 31px;
+  width: 28px !important;
+}
+
+.register-count ul #box8 .box8 {
+  height: 44px;
+  overflow: hidden;
+}
+
+.register-count ul #box8 span {
+  display: inline-block;
+  color: #00ecef;
+  width: 30px;
+  height: 44px;
+  font-size: 52.64px;
+  line-height: 44px;
+}
+
+.register-count ul #box8 .digit-container {
+  width: 30px;
+  text-align: center;
+  overflow: hidden;
+  font-size: 0;
+  font-family: '宋体';
+}
+
+.register-count ul #box9 .box9 {
+  height: 44px;
+  overflow: hidden;
+}
+
+.register-count ul #box9 span {
+  display: inline-block;
+  color: #00ecef;
+  width: 30px;
+  height: 44px;
+  font-size: 31.77px;
+  line-height: 44px;
+}
+
+.register-count ul #box9 .sign-box span {
+  width: 15px;
+}
+
+.register-count ul #box9 .digit-container {
+  width: 30px;
+  text-align: center;
+  overflow: hidden;
+  font-size: 0;
+  font-family: '宋体';
+}
+
+.register-count ul .register-msg {
+  font-size: 27px;
+  color: #fff;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-family: '微软雅黑';
+}
+
+#userProvince {
+  height: 500px;
+  right: 62px;
+  position: absolute;
+  width: 430px;
+  bottom: 0;
+  width: 438px;
+  text-align: center;
+  z-index: 10;
+  
+}
+
+#userProvince .province-head p {
+  color: #fff;
+  display: inline-block;
+}
+
+#userProvince .province-head img {
+  margin-left: 1vw;
+}
+
+#userProvince .province-content {
+  margin-top: 40px;
+}
+
+#userProvince .province-content ul li {
+  color: #fff;
+  width: 100%;
+  height: 50px;
+}
+
+#userProvince .province-content ul li .rank {
+  padding-left: 10px;
+  float: left;
+}
+
+#userProvince .province-content ul li img {
+  float: left;
+}
+
+#userProvince .province-content ul li .box .province {
+  padding-left: 20px;
+}
+
+#userProvince .province-content ul li .box .pl33 {
+  padding-left: 33px !important;
+}
+
+#userProvince .province-content ul li .box .pl24 {
+  padding-left: 24px !important;
+}
+
+#userProvince .province-content ul li .box .process {
+  height: 10px;
+  background: #00ecef;
+  margin-top: 6px;
+  border-radius: 6px;
+  margin-left: 14px;
+}
+
+#userProvince .province-content ul li .box .ratio {
+  float: right;
+  color: #00ecef;
+}
+
+#userProvince .province-content ul li .box img,
+#userProvince .province-content ul li .box span,
+#userProvince .province-content ul li .box div {
+  float: left;
+}
+
+.recently {
+  position: absolute;
+  bottom: 0;
+  left: 72px;
+  width: 500px;
+  height: 140px;
+  z-index: 10;
+}
+
+.recently .newTransaction {
+  color: #fff;
+  font-size: 20px;
+  position: relative;
+  width: 500px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.recently .newTransaction thead th {
+  color: #00ecef;
+  text-align: left;
+  font-size: 20px;
+}
+
+.recently .newTransaction thead th:nth-of-type(1) {
+  width: 23%;
+}
+
+.recently .newTransaction thead th:nth-of-type(3) {
+  width: 32%;
+  text-align: center;
+}
+
+.recently .newTransaction thead th:nth-of-type(4) {
+  text-align: center;
+  width: 18%;
+}
+
+.recently .newTransaction tbody {
+  height: 102px;
+  transition: all 1s linear;
+  -webkit-transition: all 1s linear;
+  -moz-transition: all 1s linear;
+  -o-transition: all 1s linear;
+  position: absolute;
+  top: 28px;
+  margin-top: 25px;
+}
+
+.recently .newTransaction tr {
+  height: 32px;
+  line-height: 32px;
+}
+
+.recently .newTransaction .newList td {
+  color: #00ecef;
+}
+
+.recently .newTransaction td {
+  text-align: left;
+  width: 28%;
+  font-size: 20px;
+}
+
+.recently .newTransaction td:nth-of-type(2) {
+  width: 25%;
+}
+
+.recently .newTransaction td:nth-of-type(3) {
+  width: 50%;
+  text-align: center;
+}
+
+.recently .newTransaction td:nth-of-type(4) {
+  width: 35%;
+  text-align: left;
+}
