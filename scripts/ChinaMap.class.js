@@ -21,13 +21,21 @@ var ChinaMap = function () {
     this.mapChart = null;
     this.option = null;
 
+    //tipQueue默认存储量
     this.count = 4;
+    //收到消息时执行active的开关,tipQueue无数据时触发
     this.mark = true;
+    //页面出现的tip的队列
     this.tipQueue = [];
+    //装载所有的tip的队列容器
     this.tipsQueue = [];
+    //渲染tip的容器dom
     this.tipsDom = $('#tips');
+    //渲染地图容器dom
     this.mapDom = document.getElementById('map');
+    //初始化地图实例
     this.mapChart = echarts.init(this.mapDom);
+    //地图配置
     this.option = {
       tooltip: {
         triggerOn: 'none'
@@ -39,6 +47,8 @@ var ChinaMap = function () {
             color: '#02d7da'
           }
         },
+        layoutCenter: ['50%', '50%'],
+        layoutSize: '130%',
         itemStyle: {
           normal: {
             areaColor: '#202026',
@@ -93,9 +103,12 @@ var ChinaMap = function () {
           backgroundColor: 'rgba(0,0,0,0)'
         }
       }]
-    };
-    this.mapChart.setOption(this.option);
+      //初始化地图
+    };this.mapChart.setOption(this.option);
   }
+
+  //显示tip
+
 
   _createClass(ChinaMap, [{
     key: 'active',
@@ -132,6 +145,9 @@ var ChinaMap = function () {
         }
       }, 1500);
     }
+
+    //挂在websocket传递来的数据
+
   }, {
     key: 'mount',
     value: function mount(message) {
@@ -193,6 +209,9 @@ var ChinaMap = function () {
         this.active();
       }
     }
+
+    //关闭对应的tip
+
   }], [{
     key: 'kill',
     value: function kill(id) {

@@ -15,7 +15,6 @@
   <script src="./scripts/customer-index.js"></script>
   <script src="./scripts/jquery-3.3.1.min.js"></script>
   <script src="./scripts/ChinaMap.class.js"></script>
-  <script src="./scripts/map.js"></script>
 </head>
 
 <body>
@@ -106,12 +105,29 @@
     <div class="tips" id="tips"></div>
   </section>
   <script>
-    var chinaMap = new ChinaMap();
     const ws = new WebSocket("ws://192.168.0.101:8080");
-    ws.onmessage = function (message) {
-      chinaMap.mount(message);
+    switch (ws.readyState) {
+      case WebSocket.CLOSING:
+        location.reload();
+        break;
+      case WebSocket.CLOSED:
+        location.reload();
+        break;
     }
   </script>
+  <script>
+    window.onload = function () {
+      var chinaMap = new ChinaMap();
+      ws.addEventListener('message', message => {
+        try {
+          chinaMap.mount(message);
+        } catch (error) {
+          location.reload();
+        }
+      })
+    }
+  </script>
+  <script src="./scripts/map.js"></script>
 </body>
 
 </html>

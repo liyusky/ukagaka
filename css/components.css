@@ -1,4 +1,9 @@
 @charset "UTF-8";
+
+@font-face {
+  font-family: bigruixianblackgbv;
+  src: url('../font/bigruixianblackgbv1.0.TTF');
+}
 * {
   margin: 0;
   padding: 0;
@@ -54,7 +59,7 @@ body {
 .volume ul #box1 .box1 {
   height: 44px;
   overflow: hidden;
-  font-family: '宋体';
+  font-family:bigruixianblackgbv;
 }
 
 .volume ul #box1 .trade-msg {
@@ -98,7 +103,7 @@ body {
 .volume ul #box2 .box2 {
   height: 44px;
   overflow: hidden;
-  font-family: '宋体';
+  font-family:bigruixianblackgbv;
 }
 
 .volume ul #box2 .trade-msg {
@@ -180,7 +185,7 @@ body {
   text-align: center;
   overflow: hidden;
   font-size: 0;
-  font-family: '宋体';
+  font-family:bigruixianblackgbv;
 }
 
 .volume ul #box5 .box5 {
@@ -213,7 +218,7 @@ body {
   text-align: center;
   overflow: hidden;
   font-size: 0;
-  font-family: '宋体';
+  font-family:bigruixianblackgbv;
 }
 
 .volume ul .trade-msg {
@@ -271,7 +276,7 @@ body {
   text-align: center;
   overflow: hidden;
   font-size: 0;
-  font-family: '宋体';
+  font-family:bigruixianblackgbv;
 }
 
 .tradecount ul .trade-msg {
@@ -305,7 +310,7 @@ body {
   text-align: center;
   overflow: hidden;
   font-size: 0;
-  font-family: '宋体';
+  font-family:bigruixianblackgbv;
 }
 
 .register-count {
@@ -341,7 +346,7 @@ body {
   text-align: center;
   overflow: hidden;
   font-size: 0;
-  font-family: '宋体';
+  font-family:bigruixianblackgbv;
 }
 
 .register-count ul #box9 .box9 {
@@ -367,7 +372,7 @@ body {
   text-align: center;
   overflow: hidden;
   font-size: 0;
-  font-family: '宋体';
+  font-family:bigruixianblackgbv;
 }
 
 .register-count ul .register-msg {

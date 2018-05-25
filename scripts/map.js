@@ -53,8 +53,8 @@ $(function () {
 
   var arr = [];
 
-  function moveFont(fontEvent, data) {
-
+  function moveFont(fontEvent, message) {
+    var data = JSON.parse(decodeURIComponent(message.data));
     var final_arr = fontEvent.number(String(data.TradingVolume).getAns()); // 今日交易额
     $(".box1").html(fontEvent.dom(final_arr));
     var final_arr = fontEvent.number(String(data.TotalAmount).getAns()); // 累计交易额
@@ -82,7 +82,8 @@ $(function () {
     return this.replace(pattern, ',');
   };
 
-  function cityMove(data) {
+  function cityMove(message) {
+    var data = JSON.parse(decodeURIComponent(message.data));
     var cityList = data.Users;
     var str = '<tbody class="tbody">' +
       '<tr>' +
@@ -109,7 +110,8 @@ $(function () {
     }, 10000);
   };
 
-  function rankings(data) {
+  function rankings(message) {
+    var data = JSON.parse(decodeURIComponent(message.data));
     var html = '';
     var strimg = '';
     for (var i = 0; i < data.Provinces.length; i++) {
@@ -134,11 +136,25 @@ $(function () {
       })
     }
   };
-  ws.addEventListener('message', (evt) => {
-    var data = JSON.parse(decodeURIComponent(evt.data));
-    arr = data;
-    moveFont(fontEvent, data);
-    cityMove(data);
-    rankings(data);
+  ws.addEventListener('message', message => {
+    try {
+      moveFont(fontEvent, message);
+    } catch (error) {
+      location.reload();
+    }
+  });
+  ws.addEventListener('message', message => {
+    try {
+      cityMove(message);
+    } catch (error) {
+      location.reload();
+    }
+  });
+  ws.addEventListener('message', message => {
+    try {
+      rankings(message);
+    } catch (error) {
+      location.reload();
+    }
   });
 });
