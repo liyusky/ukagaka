@@ -12,7 +12,8 @@
 }
 
 ol,
-ul, li {
+ul,
+li {
   list-style: none;
 }
 
@@ -56,17 +57,18 @@ body {
   font-size: 24px !important;
 }
 
-.volume ul #box1 .box1 {
+.volume ul .today-trade {
   height: 44px;
   overflow: hidden;
-  font-family:bigruixianblackgbv;
+  font-family: 'BigruixianBlackGBV';
+  font-weight: 600
 }
 
-.volume ul #box1 .trade-msg {
+.volume ul .trade-msg {
   font-family: '微软雅黑';
 }
 
-.volume ul #box1 span {
+.volume ul .today-trade span {
   display: inline-block;
   color: #00ecef;
   width: 30px;
@@ -75,23 +77,23 @@ body {
   line-height: 44px;
 }
 
-.volume ul #box1 .sign-box span {
+.volume ul .today-trade .sign-box span {
   width: 15px;
   margin-top: -5px;
 }
 
-.volume ul #box1 .digit-container {
+.volume ul .today-trade .digit-container {
   width: 38px;
   text-align: center;
   overflow: hidden;
   font-size: 0;
 }
 
-.volume ul #box2 {
-  margin-top: 27px;
+.volume ul .accumulate-trade {
+  margin-top: 24px;
 }
 
-.volume ul #box2 span {
+.volume ul .accumulate-trade span {
   display: inline-block;
   color: #00ecef;
   width: 30px;
@@ -100,45 +102,49 @@ body {
   line-height: 44px;
 }
 
-.volume ul #box2 .box2 {
+.volume ul .accumulate-trade {
   height: 44px;
   overflow: hidden;
-  font-family:bigruixianblackgbv;
+  font-family: 'BigruixianBlackGBV';
+  font-weight: 600;
+  font-size: 31.77px;
 }
 
-.volume ul #box2 .trade-msg {
+.volume ul .accumulate-trade .trade-msg {
   font-family: '微软雅黑';
 }
 
-.volume ul #box2 .sign-box span {
+.volume ul .accumulate-trade .sign-box span {
   width: 15px;
 }
 
-.volume ul #box2 .digit-container {
+.volume ul .accumulate-trade .digit-container {
   width: 25px;
   text-align: center;
   overflow: hidden;
   font-size: 0;
 }
 
-.volume ul #box3 .trade-msg {
+.volume ul .average-trade .trade-msg {
   position: relative;
   float: left;
   color: #fff;
 }
 
-.volume ul #box3 .box3 {
+.volume ul .average-trade {
   height: 44px;
   overflow: hidden;
-  margin-top: 5px;
+  font-family: 'BigruixianBlackGBV';
+  font-weight: 600;
+  font-size: 24.8px;
+  display: inline-block;;
+}
+
+.volume ul .average-trade .trade-msg {
   font-family: '微软雅黑';
 }
 
-.volume ul #box3 .trade-msg {
-  font-family: '微软雅黑';
-}
-
-.volume ul #box3 span {
+.volume ul .average-trade span {
   display: inline-block;
   color: #00ecef;
   width: 30px;
@@ -147,27 +153,34 @@ body {
   line-height: 44px;
 }
 
-.volume ul #box3 .sign-box span {
+.volume ul .average-trade .sign-box span {
   width: 15px;
 }
 
-.volume ul #box3 .digit-container {
+.volume ul .average-trade .digit-container {
   width: 30px;
   text-align: center;
   overflow: hidden;
   font-size: 0;
 }
 
-.volume ul #box4 .box4 {
+.volume ul .nearlyone .trade-msg{
+  display: inline-block;
+} 
+
+.volume ul .nearlyone {
   height: 44px;
   overflow: hidden;
-}
-
-.volume ul #box4 .trade-msg {
+  font-family: 'BigruixianBlackGBV';
   float: left;
 }
 
-.volume ul #box4 span {
+.volume ul .trade-register-one{
+  display: inline-block;
+  float: left;
+}
+
+.volume ul .nearlyone span {
   display: inline-block;
   color: #00ecef;
   width: 30px;
@@ -176,31 +189,35 @@ body {
   line-height: 44px;
 }
 
-.volume ul #box4 .sign-box span {
+.volume ul .nearlyone .sign-box span {
   width: 15px;
 }
 
-.volume ul #box4 .digit-container {
+.sign-box{
+  margin-top: 0!important;
+}
+
+.volume ul .nearlyone .digit-container {
   width: 30px;
   text-align: center;
   overflow: hidden;
   font-size: 0;
-  font-family:bigruixianblackgbv;
+  font-family: 'BigruixianBlackGBV';
 }
 
-.volume ul #box5 .box5 {
+.volume ul .transaction-one {
   height: 44px;
   overflow: hidden;
-  margin-top: 5px;
+  font-family: 'BigruixianBlackGBV';
   float: left;
 }
 
-.volume ul #box5 .trade-msg {
-  float: left;
+.volume ul .transaction-one .trade-msg {
   font-family: '微软雅黑';
+  float: left;
 }
 
-.volume ul #box5 span {
+.volume ul #transaction-one span {
   display: inline-block;
   color: #00ecef;
   width: 30px;
@@ -209,16 +226,51 @@ body {
   line-height: 44px;
 }
 
-.volume ul #box5 .sign-box span {
+.volume ul #transaction-one .sign-box span {
   width: 15px;
 }
 
-.volume ul #box5 .digit-container {
+
+
+.volume ul li:nth-of-type(5){
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.volume ul li:nth-of-type(5) .trade-msg{
+  display: inline-block;
+  margin-top: 0
+}
+
+.volume ul li:nth-of-type(6){
+  display: flex;
+  align-items: center;
+}
+.volume ul li:nth-of-type(6) .trade-msg{
+  display: inline-block;
+  float: left;
+  margin-top: 0
+}
+
+.volume ul li:nth-of-type(7){
+  display: flex;
+  align-items: center;
+}
+.volume ul li:nth-of-type(7) .trade-msg{
+  display: inline-block;
+  float: left;
+  margin-top: 0
+}
+
+
+
+.volume ul .transaction-one .digit-container {
   width: 30px;
   text-align: center;
   overflow: hidden;
   font-size: 0;
-  font-family:bigruixianblackgbv;
+  font-family: 'BigruixianBlackGBV';
 }
 
 .volume ul .trade-msg {
@@ -229,7 +281,7 @@ body {
 }
 
 .volume ul .mar21 {
-  margin-top: 7px;
+  margin-top: 4px;
 }
 
 .volume ul .mt37 {
@@ -249,34 +301,30 @@ body {
   z-index: 10;
 }
 
-.tradecount #box6 span {
-  float: left;
-}
-
-.tradecount #box6 .box6 {
+.tradecount .today-count {
   height: 44px;
   overflow: hidden;
 }
 
-.tradecount #box6 span {
+.tradecount .today-count span {
   display: inline-block;
   color: #00ecef;
-  width: 30px;
+  width: 35px;
   height: 44px;
   font-size: 52.64px;
   line-height: 44px;
 }
 
-.tradecount #box6 .sign-box span {
+.tradecount .today-count .sign-box span {
   width: 15px;
 }
 
-.tradecount #box6 .digit-container {
-  width: 30px;
+.tradecount .today-count .digit-container {
+  width: 35px;
   text-align: center;
   overflow: hidden;
   font-size: 0;
-  font-family:bigruixianblackgbv;
+  font-family: 'BigruixianBlackGBV';
 }
 
 .tradecount ul .trade-msg {
@@ -287,12 +335,13 @@ body {
   font-family: '微软雅黑';
 }
 
-.tradecount ul #box7 .box7 {
+.tradecount ul .accumutrans {
   height: 44px;
   overflow: hidden;
+  font-family: 'BigruixianBlackGBV';
 }
 
-.tradecount ul #box7 span {
+.tradecount ul .accumutrans span {
   display: inline-block;
   color: #00ecef;
   width: 30px;
@@ -301,16 +350,16 @@ body {
   line-height: 44px;
 }
 
-.tradecount ul #box7 .sign-box span {
+.tradecount ul .accumutrans .sign-box span {
   width: 15px;
 }
 
-.tradecount ul #box7 .digit-container {
+.tradecount ul .accumutrans .digit-container {
   width: 30px;
   text-align: center;
   overflow: hidden;
   font-size: 0;
-  font-family:bigruixianblackgbv;
+  font-family: 'BigruixianBlackGBV';
 }
 
 .register-count {
@@ -318,7 +367,7 @@ body {
   height: 202px;
   position: absolute;
   left: 1388px;
-  top: 40px;  
+  top: 40px;
   z-index: 10;
 }
 
@@ -327,34 +376,36 @@ body {
   width: 28px !important;
 }
 
-.register-count ul #box8 .box8 {
+.register-count ul .today-register {
   height: 44px;
   overflow: hidden;
+  font-family: 'BigruixianBlackGBV';
 }
 
-.register-count ul #box8 span {
+.register-count ul span {
   display: inline-block;
   color: #00ecef;
-  width: 30px;
+  width: 35px;
   height: 44px;
   font-size: 52.64px;
   line-height: 44px;
 }
 
-.register-count ul #box8 .digit-container {
-  width: 30px;
+.register-count ul .digit-container {
+  width: 35px;
   text-align: center;
   overflow: hidden;
   font-size: 0;
-  font-family:bigruixianblackgbv;
+  font-family:'BigruixianBlackGBV';
 }
 
-.register-count ul #box9 .box9 {
+.register-count ul .accumulatedUser {
   height: 44px;
   overflow: hidden;
+  font-family: 'BigruixianBlackGBV';
 }
 
-.register-count ul #box9 span {
+.register-count ul span {
   display: inline-block;
   color: #00ecef;
   width: 30px;
@@ -363,16 +414,16 @@ body {
   line-height: 44px;
 }
 
-.register-count ul #box9 .sign-box span {
+.register-count ul .sign-box span {
   width: 15px;
 }
 
-.register-count ul #box9 .digit-container {
+.register-count ul .digit-container {
   width: 30px;
   text-align: center;
   overflow: hidden;
   font-size: 0;
-  font-family:bigruixianblackgbv;
+  font-family: 'BigruixianBlackGBV';
 }
 
 .register-count ul .register-msg {
@@ -392,7 +443,6 @@ body {
   width: 438px;
   text-align: center;
   z-index: 10;
-  
 }
 
 #userProvince .province-head p {
@@ -457,77 +507,62 @@ body {
 .recently {
   position: absolute;
   bottom: 0;
-  left: 72px;
+  left: 70px;
   width: 500px;
   height: 140px;
   z-index: 10;
 }
 
-.recently .newTransaction {
-  color: #fff;
-  font-size: 20px;
-  position: relative;
-  width: 500px;
-  height: 100%;
-  overflow: hidden;
-}
-
-.recently .newTransaction thead th {
-  color: #00ecef;
-  text-align: left;
-  font-size: 20px;
-}
-
-.recently .newTransaction thead th:nth-of-type(1) {
-  width: 23%;
-}
-
-.recently .newTransaction thead th:nth-of-type(3) {
-  width: 32%;
-  text-align: center;
-}
-
-.recently .newTransaction thead th:nth-of-type(4) {
-  text-align: center;
-  width: 18%;
-}
-
-.recently .newTransaction tbody {
-  height: 102px;
-  transition: all 1s linear;
-  -webkit-transition: all 1s linear;
-  -moz-transition: all 1s linear;
-  -o-transition: all 1s linear;
+.recently .item{
   position: absolute;
-  top: 28px;
-  margin-top: 25px;
+  width: 100%;
+  z-index: 20;
+  color: #fff;
+  top: -27px;
 }
 
-.recently .newTransaction tr {
-  height: 32px;
-  line-height: 32px;
-}
-
-.recently .newTransaction .newList td {
-  color: #00ecef;
-}
-
-.recently .newTransaction td {
-  text-align: left;
-  width: 28%;
-  font-size: 20px;
-}
-
-.recently .newTransaction td:nth-of-type(2) {
+.recently .item li{
+  float: left;
   width: 25%;
 }
 
-.recently .newTransaction td:nth-of-type(3) {
-  width: 50%;
+.myscroll {
+  width: 500px;
+  height: 140px;
+  line-height: 26px;
+  font-size: 12px;
+  overflow: hidden;
+  color: #fff;
+}
+.myscroll .myscrollbox{
+ height: 90px;
+ overflow: hidden;
+ position: relative;
+ transition: all 1s linear;
+}
+
+.myscroll ul{
+  height: 30px;
+}
+
+.myscroll .myscroll-item{
+  position: relative;
+  height: 30px;;
+}
+
+.myscroll li {
+  height: 26px;
+  float: left;
+  width: 25%;
   text-align: center;
 }
 
-.recently .newTransaction td:nth-of-type(4) {
-  width: 35%;
-  text-align: left;
+.myscroll a {
+  color: #333;
+  text-decoration: none;
+}
+
+.myscroll a:hover {
+  color: #ED5565;
+  text-decoration: underline;
 }

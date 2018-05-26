@@ -3,11 +3,13 @@
 
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="./css/map.css">
   <link rel="stylesheet" href="./css/rank.css">
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/animate.css">
   <link rel="stylesheet" href="./css/components.css">
   <link rel="stylesheet" href="./css/transaction.css">
+  <script src="./scripts/jquery-3.3.1.min.js"></script>
   <script src="./scripts/echarts.min.js"></script>
   <script src="./scripts/china.js"></script>
   <script src="./scripts/geography.js"></script>
@@ -15,12 +17,80 @@
   <script src="./scripts/provices.js"></script>
   <script src="./scripts/customers.js"></script>
   <script src="./scripts/customer-index.js"></script>
-  <script src="./scripts/jquery-3.3.1.min.js"></script>
   <script src="./scripts/ChinaMap.class.js"></script>
   <script src="./scripts/Transaction.class.js"></script>
+  <script src="./scripts/Rank.class.js"></script>
+  <script src="./scripts/Balance.class.js"></script>
+  <!-- <script src="./scripts/map.js"></script> -->
 </head>
 
 <body>
+
+  <section class="volume">
+    <ul>
+      <li class="trade">
+        <div class="today-trade" id="today-trade"></div>
+      </li>
+      <li class="trade">
+        <p class="trade-msg">今日交易额(元)</p>
+      </li>
+      <li class="trade">
+        <div class="accumulate-trade" id="accumulate-trade"></div>
+      </li>
+      <li class="trade">
+        <p class="trade-msg mar21">累计交易额(元)</p>
+      </li>
+      <li class="trade mt37">
+        <p class="trade-msg mar21 fz24">平均每笔交易(元):</p>
+        <div class="average-trade" id="average-trade"></div>
+      </li>
+      <li class="trade">
+        <p class="trade-msg fz24">近1分钟注册用户(人):</p>
+        <div class="nearlyone" id="nearlyone">
+        </div>
+      </li>
+      <div class="clear"></div>
+      <li class="trade">
+        <p class="trade-msg fz24">近1分钟交易笔数(数):</p>
+        <div class="transaction-one" id="transaction-one"></div>
+      </li>
+    </ul>
+  </section>
+  <section class="tradecount">
+    <ul>
+      <li>
+        <div class="today-count" id="today-count">
+        </div>
+      </li>
+      <li>
+        <p class="trade-msg">今日交易笔数(笔)</p>
+      </li>
+      <li>
+        <div class="accumutrans" id="accumutrans">
+        </div>
+      </li>
+      <li>
+        <p class="trade-msg">累计交易笔数(笔)</p>
+      </li>
+    </ul>
+  </section>
+  <section class="register-count">
+    <ul>
+      <li>
+        <div class="today-register" id="today-register">
+        </div>
+      </li>
+      <li>
+        <p class="register-msg">今日注册用户(人)</p>
+      </li>
+      <li>
+        <div class="accumulatedUser" id="accumulatedUser">
+        </div>
+      </li>
+      <li class="register-msg">累计交易用户数(人)</li>
+    </ul>
+  </section>
+
   <section class="transaction">
     <header class="transaction-header">
       <div>城市</div>
@@ -143,29 +213,30 @@
   </script>
   <script>
     window.onload = function () {
-      const chinaMap = new ChinaMap();
-      const transaction = new Transaction();
+      const componentInstanceArr = [
+        new Rank(),
+        new ChinaMap(),
+        new Transaction(),
+        new Balance()
+      ];
       ws.addEventListener('message', message => {
-        try {
-          chinaMap.mount(message);
-        } catch (error) {
-          refresh();
-        }
+        componentInstanceArr.forEach(item => {
+          listener(item, message);
+        });
       })
-      ws.addEventListener('message', message => {
-        try {
-          transaction.mount(message);
-        } catch (error) {
-          refresh();
-        }
-      });
     }
 
-    function refresh() {
-      setTimeout(() => {
-        location.reload();
-      }, 5000);
+    function listener(componentInstance, message) {
+      try {
+        componentInstance.mount(message);
+      } catch (error) {
+        setTimeout(() => {
+          location.reload();
+        }, 5000);
+      }
     }
+  </script>
+  <script>
   </script>
 </body>
 

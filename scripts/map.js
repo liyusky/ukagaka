@@ -1,6 +1,4 @@
 $(function () {
-  var lastnum = "",
-    lastarr = "";
   var fontEvent = {
     // 例 510,085.00
     number: function (digit) {
@@ -36,14 +34,13 @@ $(function () {
       return str;
     },
     animation: function () {
-      var height = $("#box1").height();
+      var height = $(".today-trade").height();
       $(".js-l-box").each(function (i) {
         // 取到每一个字符
         var num = parseInt($(this).data("show"));
         var scrollTop = 0;
         // 移动高度乘以字符
         var scrollTop = height * num;
-        $(this).css("margin-top", 0);
         $(this).animate({
           marginTop: -scrollTop
         }, 1500);
@@ -51,29 +48,85 @@ $(function () {
     }
   };
 
-  var arr = [];
+  var onece = true;
+  console.log(1)
 
-  function moveFont(fontEvent, message) {
-    var data = JSON.parse(decodeURIComponent(message.data));
-    var final_arr = fontEvent.number(String(data.TradingVolume).getAns()); // 今日交易额
-    $(".box1").html(fontEvent.dom(final_arr));
-    var final_arr = fontEvent.number(String(data.TotalAmount).getAns()); // 累计交易额
-    $(".box2").html(fontEvent.dom(final_arr));
-    var final_arr = fontEvent.number(String(data.AvgAmount).getAns()); // 平均每笔交易
-    $(".box3").html(fontEvent.dom(final_arr));
-    var final_arr = fontEvent.number(String(data.RegUserMin1).getAns()); // 近1分钟注册用户
-    $(".box4").html(fontEvent.dom(final_arr));
-    var final_arr = fontEvent.number(String(data.TradesMin1).getAns()); // 近1分钟交易笔数
-    $(".box5").html(fontEvent.dom(final_arr));
-    var final_arr = fontEvent.number(String(data.NumberTrades).getAns()); // 今日交易笔数
-    $(".box6").html(fontEvent.dom(final_arr));
-    var final_arr = fontEvent.number(String(data.TotalTrades).getAns()); // 累计交易笔数
-    $(".box7").html(fontEvent.dom(final_arr));
-    var final_arr = fontEvent.number(String(data.TodayRegUser).getAns()); // 今日注册用户
-    $(".box8").html(fontEvent.dom(final_arr));
-    var final_arr = fontEvent.number(String(data.TotalRegCount).getAns()); // 累计交易用户
-    $(".box9").html(fontEvent.dom(final_arr));
-    fontEvent.animation();
+  function moveFont(fontEvent, data) {
+    var obj = {};
+    obj = data;
+    if (onece) {
+      onece = false;
+      var final_arr = fontEvent.number(String(data.TradingVolume).getAns()); // 今日交易额
+      $(".today-trade").html(fontEvent.dom(final_arr));
+      var final_arr = fontEvent.number(String(data.TotalAmount).getAns()); // 累计交易额
+      $(".accumulate-trade").html(fontEvent.dom(final_arr));
+      var final_arr = fontEvent.number(String(data.AvgAmount).getAns()); // 平均每笔交易
+      $(".average-trade").html(fontEvent.dom(final_arr));
+      var final_arr = fontEvent.number(String(data.RegUserMin1).getAns()); // 近1分钟注册用户
+      $(".nearlyone").html(fontEvent.dom(final_arr));
+      var final_arr = fontEvent.number(String(data.TradesMin1).getAns()); // 近1分钟交易笔数
+      $(".transaction-t").html(fontEvent.dom(final_arr));
+      var final_arr = fontEvent.number(String(data.NumberTrades).getAns()); // 今日交易笔数
+      $(".today-count").html(fontEvent.dom(final_arr));
+      var final_arr = fontEvent.number(String(data.TotalTrades).getAns()); // 累计交易笔数
+      $(".accumutrans").html(fontEvent.dom(final_arr));
+      var final_arr = fontEvent.number(String(data.TodayRegUser).getAns()); // 今日注册用户
+      $(".today-register").html(fontEvent.dom(final_arr));
+      var final_arr = fontEvent.number(String(data.TotalRegCount).getAns()); // 累计交易用户
+      $(".accumulatedUser").html(fontEvent.dom(final_arr));
+      fontEvent.animation();
+    } else {
+
+      twoExecute('today-trade', data, obj);
+      twoExecute('accumulate-trade', data, obj);
+      twoExecute('average-trade', data, obj);
+      twoExecute('nearlyone', data, obj);
+      twoExecute('transaction', data, obj);
+      twoExecute('today-count', data, obj);
+      twoExecute('accumutrans', data, obj);
+      twoExecute('today-register', data, obj);
+      twoExecute('accumulatedUser', data, obj);
+
+      function twoExecute(dom, data, obj) {
+        var newTrading = 50000 - obj.TradingVolume;
+        var newAmount = data.TotalAmount - obj.TotalAmount;
+        var newAvgAmount = data.AvgAmount - obj.AvgAmount;
+        var newRegUserMin = data.RegUserMin1 - obj.RegUserMin1;
+        var newTradesMin1 = data.TradesMin1 - obj.TradesMin1;
+        var newNumberTrades = data.NumberTrades - obj.NumberTrades;
+        var newTotalTrades = data.TotalTrades - obj.TotalTrades;
+        var newTodayRegUser = data.TodayRegUser - obj.TodayRegUser;
+        var newTotalRegCount = data.TotalRegCount - obj.TotalRegCount;
+        var arr = [newTrading, newAmount, newAvgAmount, newRegUserMin, newTradesMin1, newNumberTrades, newTotalTrades, newTotalTrades, newTodayRegUser, newTotalRegCount];
+
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i] == 0) {
+            return
+          } else {
+            console.log(arr[i]);
+            
+            var len = (String(arr[i]).split(',')[0].split(''));
+            var arrHtml = [];
+            var child = document.getElementById(dom).children[0].children;
+            for (var i = 0; i < child.length; i++) {
+              arrHtml.push(child[i]);
+            };
+            var obj = arrHtml.splice(-len.length);
+            if (child.length - 1 < len.length) {
+              document.getElementById(dom).children[0].innerHTML = '<div class="l js-l-box digit-container boxs"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>'
+            };
+            for (var j = 0; j < obj.length; j++) {
+              // console.log(len)
+              $(obj[j]).animate({
+                marginTop: -len[j] * 44
+              });
+            }
+          }
+        }
+
+      }
+    }
+
   }
 
 
@@ -83,51 +136,14 @@ $(function () {
   };
 
 
-  function rankings(message) {
+  ws.addEventListener('message', message => {
     var data = JSON.parse(decodeURIComponent(message.data));
-    var html = '';
-    var strimg = '';
-    for (var i = 0; i < data.Provinces.length; i++) {
-      if (i < 3) {
-        strimg = '<img src="img/' + (i + 1) + '.png">'
-      } else {
-        strimg = '<span class="rank">' + (i + 1) + '</span>'
-      };
-      html += '<li>' +
-        strimg +
-        '<div class="box">' +
-        '<span class="province">' + data.Provinces[i].ProviceName + '</span>' +
-        '<div class="process"></div>' +
-        '<span class="ratio">' + data.Provinces[i].Proportion * 100 + '%</span>' +
-        '</div>' +
-        '</li>';
-    };
-    $('#province').html(html);
-    for (var j = 0; j < data.Provinces.length; j++) {
-      $('.process').animate({ // 进度条总长320 10分之一为32
-        width: (data.Provinces[j].Proportion * 10 * 32)
-      })
-    }
-  };
-  ws.addEventListener('message', message => {
-    try {
-      moveFont(fontEvent, message);
-    } catch (error) {
-      location.reload();
-    }
+    moveFont(fontEvent, data);
+    // try {
+    // } catch (error) {
+    //   location.reload();
+    // }
   });
-  ws.addEventListener('message', message => {
-    try {
-      cityMove(message);
-    } catch (error) {
-      location.reload();
-    }
-  });
-  ws.addEventListener('message', message => {
-    try {
-      rankings(message);
-    } catch (error) {
-      location.reload();
-    }
-  });
+
+
 });
