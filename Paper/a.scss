@@ -1,0 +1,104 @@
+@import "./style/_flex.scss";
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+body {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  background-color: #111117;
+}
+
+.china-map {
+  width: 1188px;
+  height: 864px;
+  position: absolute;
+  bottom: 9px;
+  left: 342px;
+  top: 207px;
+  right: 390px;
+  z-index: 1;
+  .map {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+  .tips {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    background-color: transparent;
+    .tip {
+      $param: (flex flex) (direction column) (alignItems center) (justifyContent space-between);
+      @include flexSet($param);
+      position: absolute;
+      height: 72px;
+      margin-top: -36px;
+      margin-left: -66px;
+      .message {
+        height: 33px;
+        position: relative;
+        border-radius: 6px;
+        font-size: 15px;
+        padding: {
+          left: 12px;
+          right: 12px;
+        }
+        $param: (flex flex) (alignItems center) (justifyContent center);
+        @include flexSet($param);
+      }
+      .message::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        bottom: -9px;
+        left: 50%;
+        margin: {
+          left: -9px;
+        }
+        border: {
+          left: 9px solid transparent;
+          right: 9px solid transparent;
+        }
+      }
+      .message-payment {
+        color: #797903;
+        background-color: #faff98;
+      }
+      .message-payment::after {
+        border: {
+          top: 9px solid #faff98;
+        }
+      }
+      .message-borrow {
+        color: #ffffff;
+        background-color: #00ecef;
+      }
+      .message-borrow::after {
+        border: {
+          top: 9px solid #00ecef;
+        }
+      }
+      .head {
+        width: 27px;
+        height: 27px;
+      }
+    }
+  }
+}

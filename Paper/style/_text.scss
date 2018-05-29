@@ -1,0 +1,22 @@
+@mixin fontSize($size) {
+  font-size: $size / $unit * $symbol;
+}
+
+@mixin color($color) {
+  color: $color;
+}
+
+
+@mixin text($size, $color, $weight) {
+  @if $size != null {
+    @include fontSize($size);
+  }
+
+  @if $color != null {
+    @include color($color);
+  }
+  
+  @if $weight != null {
+    font-weight: $weight;
+  }
+}

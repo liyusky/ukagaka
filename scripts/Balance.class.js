@@ -67,15 +67,14 @@ var Balance = function () {
 
       var id = this.option[key];
       var oldPrice = this.previousBalance[key];
-      var newArr = newPrice.toString().split('');
-      var oldArr = oldPrice.toString().split('');
+      var newArr = String(newPrice).split('');
+      var oldArr = String(oldPrice).split('');
       var newLen = newArr.length;
       var newCount = newArr.length + Math.ceil(newArr.length / 3) - 1;
       var oldCount = oldArr.length + Math.ceil(oldArr.length / 3) - 1;
       var wrapDom = $('#' + id);
       wrapDom.html(this.setHtml(newLen));
       var itemDoms = wrapDom.find('.digit-container');
-
       itemDoms.each(function (index, item) {
         $(item).css('margin-top', oldArr[index] * -44 + 'px');
       });
@@ -97,6 +96,7 @@ var Balance = function () {
       var data = JSON.parse(decodeURIComponent(message.data));
       for (var key in data) {
         if (this.previousBalance.hasOwnProperty(key)) {
+          if (key == 'AvgAmount') data[key] = Math.ceil(data[key]);
           this.active(key, data[key]);
         }
       }

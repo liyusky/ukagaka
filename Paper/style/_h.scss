@@ -1,0 +1,16 @@
+@mixin h ($type) {
+  @if $type == h3 {
+    h3{
+      font-size: 42 / $unit * 1rem;
+      line-height: 81 / $unit * 1rem;
+    }
+  }
+
+  @if $type == h4 {
+    h4{
+      font-size: 33 / $unit * 1rem;
+      text-indent: 30 / $unit * 1rem;
+      line-height: 81 / $unit * 1rem;
+    }
+  }
+}

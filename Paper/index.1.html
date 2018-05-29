@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="map.css">
+  <link rel="stylesheet" href="./animate.css">
+  <script src="echarts.min.js"></script>
+  <script src="china.js"></script>
+  <script src="geography.js"></script>
+  <script src="./config/points.js"></script>
+  <script src="./config/provices.js"></script>
+  <script src="./customer.js"></script>
+  <script src="./config/customer-index.js"></script>
+  <script src="jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+  <section class="map" id="map"></section>
+  <!-- <section class="tips" id="tips"></section> -->
+  <!-- <div class="tip">
+    <div class="message message-loan">
+    </div>
+    <img class="head" src="./svg/borrow.svg">
+  </div> -->
+  <script>
+    const tipsDom = $('#tips');
+    const mapDom = document.getElementById('map');
+    var tipQueue = [];
+    var tipsQueue = [];
+    var mark = true;
+    let mapChart = echarts.init(mapDom);
+    var option = {
+      tooltip: {},
+      geo: {
+        map: 'china',
+        emphasis: {
+          label: {
+            color: '#02d7da',
+          }
+        },
+        itemStyle: {
+          normal: {
+            areaColor: '#202026',
+            borderColor: '#69696d'
+          },
+          emphasis: {
+            areaColor: '#2a333d'
+          }
+        },
+        regions: [{
+          name: '南海诸岛',
+          value: 0,
+          itemStyle: {
+            normal: {
+              opacity: 0,
+              label: {
+                show: false
+              }
+            }
+          },
+          emphasis: {
+            label: {
+              show: false
+            }
+          },
+        }]
+      },
+      backgroundColor: '#111117', // 图表背景色
+      series: [
+        // {
+        //   id: 'background',
+        //   coordinateSystem: 'geo',
+        //   type: 'scatter',
+        //   color: '#02d7da',
+        //   symbolSize: '2',
+        //   data: geography,
+        // },
+        {
+          id: 'customer',
+          coordinateSystem: 'geo',
+          type: 'scatter',
+          color: '#9b7aff',
+          symbolSize: '3',
+          data: customers,
+          tooltip: {
+            alwaysShowContent: true,
+            position: 'top',
+            formatter: params => {
+              return params.name;
+              let coordinate = mapChart.convertToPixel('geo', params.value);
+              let config = params.data;
+              let htmlStr =
+                `<div class="tip animated zoomIn" id="${config.name}" style="left: ${coordinate[0]}px;top: ${coordinate[1]}px;">
+                  <div class="message message-${config.type}">${config.Name}:${config.state}${config.Amount}元</div>
+                  <img class="head" src="./svg/${config.type}.svg" onload="javascript: kill('${config.name}');">
+                </div>`;
+              tipsDom.append(htmlStr);
+            },
+            backgroundColor: 'rgba(0,0,0,0)'
+          }
+        }
+      ]
+    }
+
+    mapChart.setOption(option);
+
+    const ws = new WebSocket("ws://192.168.0.101:8080");
+    ws.onmessage = function (evt) {
+      let users = JSON.parse(decodeURIComponent(evt.data)).Users;
+      // 处理后台数据
+      users.forEach((item, index, arr) => {
+        //点的名称
+        let name = `${item.ProviceNo}-${provices[item.ProviceNo]}`;
+        //点的坐标
+        var value = POINTS[name];
+        //单个点的配置参数
+        let config = {
+          name: name,
+          Amount: '',
+          Name: '',
+          State: '',
+          type: '',
+          state: '',
+          ProviceName: '',
+          value: value
+        }
+
+        //填充点的数据
+        for (let key in item) {
+          if (config.hasOwnProperty(key)) config[key] = item[key];
+        }
+        config.type = config.State == 1 ? 'payment' : 'borrow';
+        config.state = config.State == 1 ? '还款' : '借款';
+
+        //保证在点阵范围内
+        provices[item.ProviceNo] = provices[item.ProviceNo] < 3 ? ++provices[item.ProviceNo] : 0;
+
+        arr[index] = config;
+      });
+
+      //将处理后的数据存入容器
+      tipsQueue.push(...users);
+      //tip队列有值 长度为3 队列满值不执行下文
+
+      if (tipQueue.length == 3) return;
+
+      for (let i = tipQueue.length; i < 3; i++) {
+        tipQueue[i] = tipsQueue[0];
+        tipsQueue.shift();
+      }
+
+      //队列及容器中的数据都用完了
+      if (mark) {
+
+        tipQueue.forEach(item => {
+          customers[CUSTOMER_INDEX[item.name]] = item;
+        });
+
+
+        option.series[1].data = customers;
+        mapChart.setOption(option);
+        active();
+      }
+    };
+
+
+    function active() {
+      mark = false;
+      var showTip = setInterval(() => {
+        //tip队列为空时，停止循环
+        if (tipQueue.length == 0) {
+          mark = true;
+          clearInterval(showTip);
+          return;
+        };
+        //显示tip
+        mapChart.dispatchAction({
+          type: 'showTip',
+          seriesIndex: 1,
+          name: tipQueue[0].name,
+        });
+        //去除已近触发的point
+        tipQueue.shift();
+        //容器中存在未触发的point
+        if (tipsQueue.length > 0) {
+          //添加到队列
+          tipQueue.push(tipsQueue[0]);
+          //修改渲染参数，并渲染
+          customers[CUSTOMER_INDEX[tipsQueue[0].name]] = tipsQueue[0];
+          option.series[1].data = customers;
+          mapChart.setOption(option);
+          //去除容器中已渲染的点
+          tipsQueue.shift();
+        }
+      }, 1500);
+    }
+
+    function kill(id) {
+      setTimeout(function () {
+        $('#tips > #' + id).removeClass('zoomIn').addClass('zoomOut');
+      }, 3500)
+      setTimeout(function () {
+        $('#tips > #' + id).remove();
+      }, 4500)
+    }
+  </script>
+</body>
+
+</html>

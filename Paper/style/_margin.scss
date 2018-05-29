@@ -1,0 +1,7 @@
+@mixin margin ($direction, $size) {
+  .margin-#{$direction}-#{$size}{
+    margin-#{$direction}: $size / $unit * $symbol;
+  }
+}
+
+

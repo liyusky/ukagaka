@@ -1,0 +1,9 @@
+@mixin backgroundColor($color) {
+  background-color: $color ;
+}
+
+@mixin bgc($name, $color) {
+  .background-#{name} {
+    background-color: $color;
+  }
+}

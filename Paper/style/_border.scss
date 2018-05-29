@@ -1,0 +1,9 @@
+@mixin borderSet($direction) {
+  border-#{$direction}: 1px solid #dddddd;
+}
+
+@mixin border($direction) {
+  .border-#{$direction}-1 {
+    border-#{$direction}: 1px solid #dddddd;
+  }
+}

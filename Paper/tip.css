@@ -1,0 +1,53 @@
+.tip {
+  height: 75px;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between; }
+  .tip .message {
+    height: 33px;
+    position: relative;
+    border-radius: 6px;
+    font-size: 15px;
+    padding-left: 12px;
+    padding-right: 12px;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center; }
+  .tip .message::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: -9px;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent; }
+  .tip .message-loan {
+    color: #797903;
+    background-color: #faff98; }
+  .tip .message-loan::after {
+    border-top: 9px solid #faff98; }
+  .tip .message-borrow {
+    color: #ffffff;
+    background-color: #00ecef; }
+  .tip .message-borrow::after {
+    border-top: 9px solid #00ecef; }
+  .tip .head {
+    width: 27px;
+    height: 27px; }
+
+/*# sourceMappingURL=tip.css.map */

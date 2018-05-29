@@ -32,25 +32,34 @@ var Rank = function () {
 
         var numDom = $(_this.itemDoms.get(index)).find('.item-num');
         var railDom = $(_this.itemDoms.get(index)).find('.link-rail');
-        var end = item.Proportion * 100;
+        var end = parseInt(item.Proportion * 100);
 
-        var animatation = setInterval(function () {
-          if (end == _this.ratio[item.ProviceNo]) {
-            _this.ratio[item.ProviceNo] = end;
-            clearInterval(animatation);
-            return;
-          }
-          _this.ratio[item.ProviceNo]++;
-
-          numDom.text(_this.ratio[item.ProviceNo] + '%');
-          railDom.css('width', _this.ratio[item.ProviceNo] + '%');
-        }, (end - _this.ratio[item.ProviceNo] * 100) * 1);
+        _this.animatation(end, item, numDom, railDom);
         _this.count = index;
       });
 
       this.itemDoms.each(function (index, item) {
         if (index > _this.count && !$(item).hasClass('hide')) $(item).addClass('hide');
       });
+    }
+  }, {
+    key: 'animatation',
+    value: function animatation(end, item, numDom, railDom) {
+      var _this2 = this;
+
+      setTimeout(function () {
+        if (end == _this2.ratio[item.ProviceNo]) return;
+        if (end > _this2.ratio[item.ProviceNo]) {
+          _this2.ratio[item.ProviceNo]++;
+        }
+        if (end < _this2.ratio[item.ProviceNo]) {
+          _this2.ratio[item.ProviceNo]--;
+        }
+
+        numDom.text(_this2.ratio[item.ProviceNo] + '%');
+        railDom.css('width', _this2.ratio[item.ProviceNo] + '%');
+        return _this2.animatation(end, item, numDom, railDom);
+      }, Math.abs(end - this.ratio[item.ProviceNo]) * 20);
     }
   }]);
 

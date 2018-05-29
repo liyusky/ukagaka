@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="map.css">
+  <link rel="stylesheet" href="./animate.css">
+  <script src="echarts.min.js"></script>
+  <script src="china.js"></script>
+  <script src="geography.js"></script>
+  <script src="./config/points.js"></script>
+  <script src="./config/provices.js"></script>
+  <script src="./config/customers.js"></script>
+  <script src="./config/customer-index.js"></script>
+  <script src="jquery-3.3.1.min.js"></script>
+  <script src="./components/ChinaMap.js"></script>
+</head>
+
+<body>
+  <section class="china-map">
+    <div class="map" id="map"></div>
+    <div class="tips" id="tips"></div>
+  </section>
+  <script>
+    var chinaMap = new ChinaMap();
+    const ws = new WebSocket("ws://192.168.0.101:8080");
+    ws.onmessage = function (message) {
+      chinaMap.mount(message);
+    }
+  </script>
+</body>
+
+</html>
